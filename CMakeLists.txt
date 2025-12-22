@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.0)
+project(fsm)
+find_package(Boost REQUIRED)
+add_executable(fsm fsm.cpp)
+target_link_libraries(fsm PRIVATE Boost::boost)
