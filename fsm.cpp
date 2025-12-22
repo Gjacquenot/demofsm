@@ -47,37 +47,6 @@ struct MotorFSM : sc::state_machine<MotorFSM, Idle> {
     std::string state = "Unknown";
 };
 
-/*
-struct Idle : sc::state<Idle, MotorFSM> {
-    using reactions = sc::transition<EvStart, Running>;
-
-    Idle(my_context ctx) : my_base(ctx) {
-        std::cout << "[STATE] Idle\n";
-    }
-};
-
-struct Running : sc::state<Running, MotorFSM> {
-    using reactions = sc::transition<EvStop, Idle>;
-
-    Running(my_context ctx) : my_base(ctx) {
-        std::cout << "[STATE] Running\n";
-        context<MotorFSM>().state = "Running";
-    }
-
-    ~Running() {
-        std::cout << "[STATE] Exit Running\n";
-    }
-};
-
-struct Error : sc::state<Error, MotorFSM> {
-    using reactions = sc::transition<EvReset, Idle>;
-
-    Error(my_context ctx) : my_base(ctx) {
-        std::cout << "[STATE] Error\n";
-    }
-};
-*/
-
 struct Running : sc::state<Running, MotorFSM> {
     using reactions = boost::mpl::list<
         sc::transition<EvStop, Idle>,
@@ -87,6 +56,7 @@ struct Running : sc::state<Running, MotorFSM> {
 
     Running(my_context ctx) : my_base(ctx) {
         std::cout << "[STATE] Running\n";
+        context<MotorFSM>().state = "Running";
     }
 
     sc::result react(const EvTick &) {
