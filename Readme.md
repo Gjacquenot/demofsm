@@ -6,10 +6,10 @@
 
 This project contains:
 
-- A C++ implementation of a finite state machine (`fsm.cpp`). :contentReference[oaicite:0]{index=0}
-- A Python script to visualize logs (`plot_log.py`). :contentReference[oaicite:1]{index=1}
-- Build configuration files (CMakeLists, Makefile, Dockerfile). :contentReference[oaicite:2]{index=2}
-- A state machine diagram (`fsm.png`). :contentReference[oaicite:3]{index=3}
+- A C++ implementation of a finite state machine (`fsm.cpp`),
+- A Python script to visualize logs (`plot_log.py`),
+- Build configuration files (CMakeLists, Makefile, Dockerfile).
+- The result state machine diagram (`fsm.png`).
 
 ---
 
@@ -32,6 +32,20 @@ This project contains:
 The finite state machine implemented here is meant for educational/demo use. The included image (`fsm.png`) shows the design of the machine states and transitions.
 
 If you’re exploring how to structure an FSM in C++, this repository gives a minimal starting point.
+
+## Finite State Machine
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Running : EvStart
+    Running --> Idle : EvStop
+    Running --> Error : EvFail
+    Error --> Idle : EvReset
+    Idle --> Idle : EvTick
+    Running --> Running : EvTick
+    Error --> Error : EvTick
+```
 
 ## 🛠️ Build & Run (C++)
 
