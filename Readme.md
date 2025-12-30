@@ -35,6 +35,8 @@ If you’re exploring how to structure an FSM in C++, this repository gives a mi
 
 ## Finite State Machine
 
+Here is a complete version:
+
 ```mermaid
 stateDiagram-v2
     [*] --> Idle
@@ -45,6 +47,17 @@ stateDiagram-v2
     Idle --> Idle : EvTick
     Running --> Running : EvTick
     Error --> Error : EvTick
+```
+
+Here is a simplified version:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle
+    Idle --> Running : EvStart
+    Running --> Idle : EvStop
+    Running --> Error : EvFail
+    Error --> Idle : EvReset
 ```
 
 ## 🛠️ Build & Run (C++)
