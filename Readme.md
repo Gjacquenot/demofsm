@@ -58,6 +58,7 @@ stateDiagram-v2
     Running --> Idle : EvStop
     Running --> Error : EvFail
     Error --> Idle : EvReset
+    Idle --> Idle
 ```
 
 ## 🛠️ Build & Run (C++)
