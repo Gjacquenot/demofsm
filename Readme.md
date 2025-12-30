@@ -99,3 +99,7 @@ python plot_log.py <path_to_log_file>
 ```
 
 Replace <path_to_log_file> with your actual log file location.
+
+# Notes
+
+This project has been developped with AI assistant only, using prompts and code generation.
