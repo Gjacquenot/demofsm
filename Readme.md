@@ -49,7 +49,7 @@ stateDiagram-v2
     Error --> Error : EvTick
 ```
 
-Here is a simplified version:
+Here is a simplified version without `EvTick`: 
 
 ```mermaid
 stateDiagram-v2
@@ -58,7 +58,6 @@ stateDiagram-v2
     Running --> Idle : EvStop
     Running --> Error : EvFail
     Error --> Idle : EvReset
-    Idle --> Idle
 ```
 
 ## 🛠️ Build & Run (C++)
