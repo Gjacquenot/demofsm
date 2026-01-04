@@ -1,0 +1,37 @@
+name: Docker Build & Run
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Set up Docker Buildx (recommended for multi-stage builds)
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # 3. Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build \
+            --tag demofsm:ci \
+            .
+
+      # 4. Run container
+      - name: Run Docker container
+        run: |
+          docker run --rm demofsm:ci
+
+      # 5. (Optional) Show image size
+      - name: Show Docker image size
+        run: |
+          docker images demofsm:ci
