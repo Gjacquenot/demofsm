@@ -20,3 +20,9 @@ clean:
 	@rm -f log.csv
 	@rm -f log.png
 	@rm -rf build
+
+docker_build:
+	docker build -t fsm_simulator .
+
+docker_run:
+	docker run --rm -v $(PWD):/app fsm_simulator
